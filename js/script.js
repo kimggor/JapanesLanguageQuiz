@@ -96,10 +96,17 @@ const showHint = () => {
   let koreanPronunciation = "";
   const quizType = document.getElementById("quiz-type-label").innerText;
 
-  for (let char of japaneseSound) {
-    koreanPronunciation +=
-      getKoreanPronunciation(char, "hiragana") ||
-      getKoreanPronunciation(char, "katakana");
+  // 퀴즈 타입이 단어 생성일 때
+  if (quizType === "퀴즈 타입: 단어 생성") {
+    for (let char of japaneseSound) {
+      koreanPronunciation +=
+        getKoreanPronunciation(char, "hiragana") ||
+        getKoreanPronunciation(char, "katakana");
+    }
+  } else if (quizType === "퀴즈 타입: 히라가나") {
+    koreanPronunciation = getKoreanPronunciation(japaneseSound, "hiragana");
+  } else if (quizType === "퀴즈 타입: 가타카나") {
+    koreanPronunciation = getKoreanPronunciation(japaneseSound, "katakana");
   }
 
   alert(`힌트: ${koreanPronunciation}`);
