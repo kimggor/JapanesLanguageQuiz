@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>일본어 발음 퀴즈</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      h2 {
+        margin: 10px 0;
+      }
+      p {
+        margin: 5px 0;
+      }
+      button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="question-label">일본어 오십음도:</h2>
+    <h1 id="japanese-sound-label"></h1>
+    <h3 id="quiz-type-label"></h3>
+    <button id="hiragana-btn">히라가나</button>
+    <button id="katakana-btn">가타카나</button>
+    <button id="generate-hiragana-word-btn">히라가나 단어 생성</button>
+    <button id="generate-katakana-word-btn">가타카나 단어 생성</button>
+    <button id="show-hint-btn">힌트</button>
+    <h3>한국어 발음을 입력하세요:</h3>
+    <input type="text" id="answer-input" />
+    <button id="check-answer-btn">확인</button>
+    <h3 id="result-label"></h3>
+    <h3 id="correct-cnt">맞춘 정답: 0</h3>
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
