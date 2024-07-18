@@ -9,12 +9,11 @@ const getRandomJapaneseSound = (type) => {
 };
 
 // 히라가나, 가타카나에 맞는 한국어 발음 추출
-const getKoreanPronunciation = (char, type) => {
-  const pronunciationMap =
-    type === "hiragana"
-      ? japaneseData.hiraganaPronunciation
-      : japaneseData.katakanaPronunciation;
-  return pronunciationMap[char] || "Unknown";
+const getKoreanPronunciation = (char) => {
+  const { hiraganaPronunciation, katakanaPronunciation } = japaneseData;
+  return (
+    hiraganaPronunciation[char] || katakanaPronunciation[char] || "Unknown"
+  );
 };
 
 // 추출한 글자 중 '히라가나'만 저장, 출력
@@ -54,14 +53,10 @@ const checkAnswer = () => {
   // 퀴즈 타입이 단어 생성일 때
   if (quizType === "퀴즈 타입: 단어 생성") {
     for (let char of japaneseSound) {
-      koreanPronunciation +=
-        getKoreanPronunciation(char, "hiragana") ||
-        getKoreanPronunciation(char, "katakana");
+      koreanPronunciation += getKoreanPronunciation(char);
     }
-  } else if (quizType === "퀴즈 타입: 히라가나") {
-    koreanPronunciation = getKoreanPronunciation(japaneseSound, "hiragana");
-  } else if (quizType === "퀴즈 타입: 가타카나") {
-    koreanPronunciation = getKoreanPronunciation(japaneseSound, "katakana");
+  } else {
+    koreanPronunciation = getKoreanPronunciation(japaneseSound);
   }
 
   if (userInput === koreanPronunciation) {
@@ -99,14 +94,10 @@ const showHint = () => {
   // 퀴즈 타입이 단어 생성일 때
   if (quizType === "퀴즈 타입: 단어 생성") {
     for (let char of japaneseSound) {
-      koreanPronunciation +=
-        getKoreanPronunciation(char, "hiragana") ||
-        getKoreanPronunciation(char, "katakana");
+      koreanPronunciation += getKoreanPronunciation(char);
     }
-  } else if (quizType === "퀴즈 타입: 히라가나") {
-    koreanPronunciation = getKoreanPronunciation(japaneseSound, "hiragana");
-  } else if (quizType === "퀴즈 타입: 가타카나") {
-    koreanPronunciation = getKoreanPronunciation(japaneseSound, "katakana");
+  } else {
+    koreanPronunciation = getKoreanPronunciation(japaneseSound);
   }
 
   alert(`힌트: ${koreanPronunciation}`);
